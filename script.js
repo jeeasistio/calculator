@@ -5,12 +5,11 @@ const erase = document.getElementById('erase');
 const buttons = document.getElementById('buttons');
 const equals = document.getElementById('equals');
 const clear = document.getElementById('clear');
-const section =document.getElementById('output');
 
 // output on click
 const printOutput = num => output.textContent += num;
 
-// print to history 
+// print to history
 const printHistory = num => history.textContent = num;
 
 // clear
@@ -30,21 +29,20 @@ const eraseFunc = onOutput => {
 // button listeners
 buttons.addEventListener('click', e => {
   const clicked = e.target;
-  
+
   if (clicked.getAttribute('data-type') === 'clickable') {
     history.style.color = '#ccc'
     history.style.fontSize = '1.5rem'
     printOutput(clicked.textContent);
   }
-  
-  if (output.textContent.match(/^[\+\-\*\/]/)) {
-    const expression = history.textContent + output.textContent;
-    printHistory(eval(expression))
-  } else {
-    printHistory(eval(output.textContent));
-  }
-  
+
   if (clicked === equals) {
+    if (output.textContent.match(/^[\+\-\*\/]/)) {
+      const expression = history.textContent + output.textContent;
+      printHistory(eval(expression))
+    } else {
+      printHistory(eval(output.textContent));
+    }
     clearOutput(output);
     history.style.color = '#0cf'
     history.style.fontSize = '2rem'
