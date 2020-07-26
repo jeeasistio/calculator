@@ -48,6 +48,7 @@ header {
 
 #history-num {
   color: #ccc;
+  transition: all 0.1s;
 }
 
 #buttons {
